@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.tellirium.farmer.ui.fragments.LoginFragment"
+        android:label="LoginFragment" >
+
+        <action
+            android:id="@+id/action_loginFragment_to_dashboardFragment"
+            app:destination="@id/dashboardFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/dashboardFragment"
+        android:name="com.tellirium.farmer.ui.fragments.DashboardFragment"
+        android:label="DashboardFragment" >
+        <argument
+            android:name="user"
+            app:argType="com.tellirium.farmer.db.model.User" />
+        <action
+            android:id="@+id/action_dashboardFragment_to_farmerListFragment"
+            app:destination="@id/farmerListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerListFragment"
+        android:name="com.tellirium.farmer.ui.fragments.FarmerListFragment"
+        android:label="FarmerListFragment" >
+        <action
+            android:id="@+id/action_farmerListFragment_to_farmerFragmentDetail"
+            app:destination="@id/farmerFragmentDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmerFragmentDetail"
+        android:name="com.tellirium.farmer.ui.fragments.FarmerFragmentDetail"
+        android:label="FarmerFragmentDetail" >
+        <argument
+            android:name="farmer"
+            app:argType="com.tellirium.farmer.db.model.Farmer" />
+        <action
+            android:id="@+id/action_farmerFragmentDetail_to_addFarmFragment"
+            app:destination="@id/addFarmFragment" />
+        <action
+            android:id="@+id/action_farmerFragmentDetail_to_updateFarmerFragment"
+            app:destination="@id/updateFarmerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addFarmFragment"
+        android:name="com.tellirium.farmer.ui.fragments.AddFarmFragment"
+        android:label="AddFarmFragment" >
+        <argument
+            android:name="farmerId"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_addFarmFragment_to_farmMapFragment"
+            app:destination="@id/farmMapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/farmMapFragment"
+        android:name="com.tellirium.farmer.ui.fragments.FarmMapFragment"
+        android:label="FarmMapFragment" />
+    <fragment
+        android:id="@+id/updateFarmerFragment"
+        android:name="com.tellirium.farmer.ui.fragments.UpdateFarmerFragment"
+        android:label="UpdateFarmerFragment" >
+        <argument
+            android:name="farmer"
+            app:argType="com.tellirium.farmer.db.model.Farmer" />
+    </fragment>
+</navigation>
